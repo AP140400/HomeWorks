@@ -1,0 +1,20 @@
+def print_params(a = 1, b = 'строка', c = True):
+    print(f'a: {a}, b: {b}, c: {c}')
+
+# функция с параметрами по умолчанию
+print_params()
+print_params(5)
+print_params(b = 'новая строка')
+print_params(c = False)
+print_params(b = 25)  # не работает, так как не указан параметр a
+print_params(c = [1, 2, 3])  # не работает, так как не указан параметр a
+
+# распаковка параметров
+values_list = [10, 'hello', False]
+values_dict = {'a': 15, 'b': 'world', 'c': True}
+print_params(*values_list)
+print_params(**values_dict)
+
+# распаковка + отдельные параметры
+values_list_2 = [7, 'python']
+print_params(*values_list_2, 42)
