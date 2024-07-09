@@ -1,11 +1,23 @@
-def single_root_words(root_word, *other_words):
-    same_words = []
-    for word in other_words:
-        if root_word in word or word in root_word:
-            same_words.append(word)
-    return same_words
+calls = 0
 
-result1 = single_root_words('rich', 'richiest', 'orichalcum', 'richies', 'cheers')
-result2 = single_root_words('disablement', 'able', 'mable', 'disable', 'bagel')
-print(result1)
-print(result2)
+def count_calls():
+    global calls
+    calls += 1
+
+def string_info(string):
+    count_calls()
+    return (len(string), string.upper(), string.lower())
+
+def is_contains(string, list_to_search):
+    count_calls()
+    string_lower = string.lower()
+    list_to_search_lower = [item.lower() for item in list_to_search]
+    return string_lower in list_to_search_lower
+
+# Примеры вызова функций
+if __name__ == "__main__":
+    print(string_info('Capybara'))
+    print(string_info('Armageddon'))
+    print(is_contains('Urban', ['ban', 'BaNaN', 'urBAN'])) # Urban ~ urBAN
+    print(is_contains('cycle', ['recycling', 'cyclic'])) # No matches
+    print(calls)
